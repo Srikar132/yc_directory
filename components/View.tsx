@@ -8,12 +8,12 @@ const View = async ({id} : {id : string}) => {
 
     const data = await client.withConfig({useCdn : false}).fetch(STARTUP_VIEWS_QUERY,{id});
 
-    after(async () => {
-        await writeClient
-        .patch(id)
-        .set({views : data?.views + 1})
-        .commit()
-    });
+        after(async () => {
+            await writeClient
+            .patch(id)
+            .set({views : data?.views + 1})
+            .commit()
+        });
 
   return (
     <div className='view-container'>
